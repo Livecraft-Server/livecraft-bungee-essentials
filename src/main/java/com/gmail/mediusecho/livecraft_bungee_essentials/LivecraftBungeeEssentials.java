@@ -26,6 +26,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.commands.ReloadCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
 import com.gmail.mediusecho.livecraft_bungee_essentials.manager.TeleportManager;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.Module;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.BungeeUtil;
 import net.md_5.bungee.api.ChatColor;
@@ -64,6 +65,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
 
         moduleList = new ArrayList<>();
         moduleList.add(new TeleportModule(this));
+        moduleList.add(new HomeModule(this));
 
         for (Module m : moduleList) {
             m.reload();
