@@ -21,6 +21,7 @@ package com.gmail.mediusecho.livecraft_bungee_essentials.settings;
 
 import com.gmail.mediusecho.livecraft_bungee_essentials.LivecraftBungeeEssentials;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.TypeUtil;
+import org.jetbrains.annotations.NotNull;
 
 public class SettingsValue<T> extends SettingsPointer {
 
@@ -28,7 +29,7 @@ public class SettingsValue<T> extends SettingsPointer {
     private final T defaultValue;
     private final Class<T> type;
 
-    public SettingsValue(String path, T defaultValue)
+    public SettingsValue(String path, @NotNull T defaultValue)
     {
         super(path);
         this.defaultValue = defaultValue;
@@ -37,7 +38,10 @@ public class SettingsValue<T> extends SettingsPointer {
 
     public T getValue ()
     {
-        String value = plugin.getConfig().getString(path);
-        return (T) TypeUtil.parseType(value, type, defaultValue);
+        Object value = plugin.getConfig().get(path);
+        if (value != null) {
+            return (T)TypeUtil.parseType(value.toString(), type, defaultValue);
+        }
+        return defaultValue;
     }
 }
