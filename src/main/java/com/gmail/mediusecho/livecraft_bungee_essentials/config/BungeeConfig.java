@@ -42,7 +42,7 @@ public class BungeeConfig {
 
         if (!configurationFile.exists())
         {
-            configurationFile.mkdirs();
+            configurationFile.getParentFile().mkdirs();
             if (plugin.getResourceAsStream(name) == null)
             {
                 try {
