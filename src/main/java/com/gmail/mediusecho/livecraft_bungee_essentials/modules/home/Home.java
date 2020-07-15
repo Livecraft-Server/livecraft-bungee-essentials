@@ -17,14 +17,34 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.gmail.mediusecho.livecraft_bungee_essentials.settings;
+package com.gmail.mediusecho.livecraft_bungee_essentials.modules.home;
 
-public class Settings {
+import com.gmail.mediusecho.livecraft_bungee_essentials.util.Location;
+import net.md_5.bungee.api.config.ServerInfo;
+import net.md_5.bungee.api.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
-    /** Homes **/
-    public static final SettingsValue<Boolean> HOMES_ENABLED = new SettingsValue<>("modules.homes.enabled", true);
+public class Home {
 
-    /** Teleport **/
-    public static final SettingsValue<Boolean> TELEPORT_ENABLED = new SettingsValue<>("modules.teleport.enabled", true);
-    public static final SettingsValue<Integer> TELEPORT_TIMEOUT = new SettingsValue<>("modules.teleport.timeout", 120);
+    private final String name;
+    private final Location location;
+
+    public Home (String name, Location location)
+    {
+        this.name = name;
+        this.location = location;
+    }
+
+    public String getName () {
+        return name;
+    }
+
+    public Location getLocation () {
+        return location;
+    }
+
+    public ServerInfo getServerInfo (@NotNull Plugin plugin) {
+        return plugin.getProxy().getServerInfo(location.getServerName());
+    }
+
 }

@@ -33,6 +33,18 @@ public enum Lang {
     TELEPORT_BACK ("misc.messages.back"),
     TELEPORT_BACK_ERROR ("misc.messages.back-error"),
 
+    /** Home **/
+    HOME_SET ("modules.homes.messages.set"),
+    HOME_SET_MULTIPLE ("modules.homes.messages.set-multiple"),
+    HOME_SET_ERROR ("modules.homes.messages.home-set-error"),
+    HOME_DELETED ("modules.homes.messages.delete"),
+    HOME_DELETE_ERROR ("modules.homes.messages.delete-error"),
+    HOME_MISSING ("modules.homes.messages.missing"),
+    HOME_RESERVED ("modules.homes.messages.reserved"),
+    HOME_LIMIT_REACHED ("modules.homes.messages.limit-reached"),
+    HOME_LIST ("modules.homes.messages.list"),
+    HOME_UNLIMITED_LIST ("modules.homes.messages.list-unlimited"),
+
     /** Teleport **/
     TELEPORT_ERROR ("modules.teleport.messages.error"),
     TELEPORT_PENDING_ERROR ("modules.teleport.messages.pending-error"),

@@ -7,7 +7,27 @@ misc:
     back: "&6Returning to previous location"
     back-error: "&cCould not find previous location"
 #
-modules:
+modules
+  #
+  homes:
+    enabled: true
+    messages:
+      set: "&a[*] Home was set. Use &7/home &ato return to this spot"
+      set-multiple: "&a[*] Home '&7{1}&a' was set. Use &7/home {1} &ato return to this spot"
+      delete: "&a[*] &7'{1}&a' was deleted"
+      delete-error: "&c[*] '&f{1}&c' does not exist"
+      missing: "&c[*] Hmm, that home appears to be missing"
+      reserved: "&c[*] {1} cannot be set manually"
+      limit-reached: "&c[*] You cannot set more than &6{1} &chomes."
+      home-set-usage: "&c[*] Usage: &7/sethome <name>"
+      home-set-error: "&c[*] There was an error setting this home, please try again"
+      # {1}: How many homes the player currently has
+      # {2}: How many homes the player can have
+      # {3}: All homes the player has separated by ','
+      list: "&a[*] Homes (&e{1}&a/&e{2}&a): &f{3}"
+      # {1} How many homes the player currently has
+      # {2}: All homes the player has separated by ','
+      list-unlimited: "&a[*] Homes: (&7{1}&a/&eUnlimited&a): &f{2}"
   #
   teleport:
     enabled: true
