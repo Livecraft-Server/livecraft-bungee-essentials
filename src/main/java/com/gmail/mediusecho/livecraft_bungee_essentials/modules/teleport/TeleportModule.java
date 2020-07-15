@@ -214,7 +214,6 @@ public class TeleportModule extends Module {
         out.writeUTF("location"); // Let this module know that it will receive a location
         out.writeUTF(p.getUniqueId().toString());
 
-        plugin.log("sending location request for player: " + p.getName() + " on server: " + p.getServer().getInfo().getName());
         p.getServer().sendData("lce:message", out.toByteArray());
     }
 
