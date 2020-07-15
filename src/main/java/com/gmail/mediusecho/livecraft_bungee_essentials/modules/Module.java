@@ -62,10 +62,8 @@ public abstract class Module implements Listener {
         }
 
         // Enable if the enable flag is true
-        if (!isEnabled && enabledFlag.getValue())
-        {
+        if (!isEnabled && enabledFlag.getValue()) {
             enable();
-            return;
         }
 
         // Return if we're still disabled
