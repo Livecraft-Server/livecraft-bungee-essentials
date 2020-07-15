@@ -1,0 +1,44 @@
+misc:
+  messages:
+    reload: ""
+    no-permission: ""
+    unknown-command: ""
+    unknown-player: "&c[*] Could not find {1}"
+    back: "&6Returning to previous location"
+    back-error: "&cCould not find previous location"
+#
+modules:
+  #
+  teleport:
+    enabled: true
+    # How long a pending teleport request will wait before
+    # timing out.
+    timeout: 120
+    messages:
+      # Misc
+      error: "&c[*] There was an error teleporting, please try again"
+      pending-error: "&c[*] You don't have any pending teleport requests"
+      # Teleport Requests
+      request-sent: "&6Request sent to &c{1}"
+      request-accepted: "&6Teleport request accepted"
+      request-accepted-from: "&6{1} &caccepted your teleport request."
+      request-denied: "&6Teleport request denied."
+      request-denied-from: "&c{1} &6denied your teleport request."
+      request-cancel: "&6Pending teleport request cancelled."
+      request-cancel-from: "&c{1} &6cancelled their request."
+      request-cancel-tip: "&6To cancel this request, type &c/tpacancel"
+      request-self: "&cYou can't teleport to yourself"
+      request-timed-out: "&4Teleport request has timed out."
+      request-accept-tip: "&6To teleport, type &c/tpaccept"
+      request-deny-tip: "&6To deny this request, type &c/tpdeny"
+      request-timeout-tip: "&6This request will timeout after &c{1} seconds&6."
+      # Teleport commands
+      tpa: "&c{1} &6has requested to teleport to you."
+      teleport-usage: "&c[*] Missing player name"
+      tpahere: "&c{1} &6has requested that you teleport to them."
+      teleporting: "&6Teleporting..."
+      teleporting-to-player: "&6Teleporting to &c{1}&6."
+      tips:
+        - "&6To teleport, type &c/tpaccept"
+        - "&6To deny this request, type &c/tpdeny"
+        - "&6This request will timeout after &c{1} seconds&6."
