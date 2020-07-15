@@ -1,3 +1,7 @@
 livecraft-bungee-essentials.iml
 .idea/misc.xml
 .idea/.gitignore
+.idea/artifacts/
+.idea/dictionaries/echom.xml
+out/
+target/
