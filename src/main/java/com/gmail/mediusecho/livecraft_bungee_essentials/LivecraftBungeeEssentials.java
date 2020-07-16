@@ -21,6 +21,7 @@ package com.gmail.mediusecho.livecraft_bungee_essentials;
 
 import com.gmail.mediusecho.fusion.BungeeCommandFramework;
 import com.gmail.mediusecho.fusion.LanguageProvider;
+import com.gmail.mediusecho.fusion.properties.LangKey;
 import com.gmail.mediusecho.livecraft_bungee_essentials.commands.BackCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.commands.ReloadCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
@@ -29,6 +30,8 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.modules.Module;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.BungeeUtil;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.LuckPermsProvider;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -40,6 +43,8 @@ import java.util.logging.Level;
 public class LivecraftBungeeEssentials extends Plugin implements LanguageProvider {
 
     public static LivecraftBungeeEssentials instance;
+
+    private LuckPerms luckPermsApi;
 
     private List<Module> moduleList;
     private BungeeCommandFramework commandFramework;
@@ -54,6 +59,8 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         instance = this;
         config = BungeeUtil.getPluginConfig();
         playerConfigMap = new HashMap<>();
+
+        luckPermsApi = LuckPermsProvider.get();
 
         getProxy().registerChannel("lce:message");
 
@@ -110,6 +117,16 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
      */
     public TeleportManager getTeleportManager () {
         return teleportManager;
+    }
+
+    /**
+     * Returns the LuckPerms api object
+     *
+     * @return
+     *      LuckPerms api
+     */
+    public LuckPerms getLuckPermsApi () {
+        return luckPermsApi;
     }
 
     /**
