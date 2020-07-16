@@ -58,6 +58,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         getProxy().registerChannel("lce:message");
 
         commandFramework = new BungeeCommandFramework(this, this);
+        commandFramework.registerDefaultLangKey(LangKey.NO_PERMISSION, Lang.NO_PERMISSION.key);
         commandFramework.registerMainCommand(new ReloadCommand(this), "lcb.command.reload");
         commandFramework.registerMainCommand(new BackCommand(this), "lcb.command.back");
 

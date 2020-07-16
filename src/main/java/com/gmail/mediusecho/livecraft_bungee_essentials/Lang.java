@@ -29,6 +29,7 @@ public enum Lang {
 
     /** Misc **/
     RELOAD ("misc.messages.reload"),
+    NO_PERMISSION ("misc.messages.no-permission"),
     UNKNOWN_PLAYER ("misc.messages.unknown-player"),
     TELEPORT_BACK ("misc.messages.back"),
     TELEPORT_BACK_ERROR ("misc.messages.back-error"),
