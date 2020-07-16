@@ -80,11 +80,19 @@ public class HomeModule extends Module {
         String subChannel = in.readUTF();
         String id = in.readUTF();
 
-        if (!subChannel.equalsIgnoreCase("request-location") || !id.equalsIgnoreCase("home")) {
+        if (!subChannel.equalsIgnoreCase("request-location")) {
             return;
         }
 
-        addPendingHome(player, in);
+        // Set this players normal home
+        if (id.equalsIgnoreCase("home")) {
+            addPendingHome(player, in);
+        }
+
+        // Set this players bed home
+        else if (id.equalsIgnoreCase("bed")) {
+            addBedHome(player, in);
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -324,5 +332,21 @@ public class HomeModule extends Module {
 
         Lang message = homeName.equalsIgnoreCase("home") ? Lang.HOME_SET : Lang.HOME_SET_MULTIPLE;
         player.sendMessage(message.get("{1}", homeName));
+    /**
+     * Sets this players bed home
+     *
+     * @param player
+     *      The player to add this home to.
+     * @param in
+     *      The location data received from the bungee proxy
+     */
+    private void addBedHome (@NotNull ProxiedPlayer player, ByteArrayDataInput in)
+    {
+        UUID id = player.getUniqueId();
+        String serverName = player.getServer().getInfo().getName();
+        Location location = new Location(serverName, in);
+
+        addHome(id, new Home("bed", location));
+        Lang.HOME_BED_SET.sendTo(player);
     }
 }
