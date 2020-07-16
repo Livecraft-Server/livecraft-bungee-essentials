@@ -27,7 +27,7 @@ modules
       list: "&a[*] Homes (&e{1}&a/&e{2}&a): &f{3}"
       # {1} How many homes the player currently has
       # {2}: All homes the player has separated by ','
-      list-unlimited: "&a[*] Homes: (&7{1}&a/&eUnlimited&a): &f{2}"
+      list-unlimited: "&a[*] Homes: (&e{1}&a/&eUnlimited&a): &f{2}"
   #
   teleport:
     enabled: true

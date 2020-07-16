@@ -26,6 +26,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.Module;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands.DeleteHomeCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands.HomeCommand;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands.HomesCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands.SetHomeCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.settings.Settings;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.Location;
@@ -59,6 +60,7 @@ public class HomeModule extends Module {
         commandFramework.registerMainCommand(new HomeCommand(this), "lcb.command.modules.home.teleport");
         commandFramework.registerMainCommand(new SetHomeCommand(this), "lcb.command.modules.home.set");
         commandFramework.registerMainCommand(new DeleteHomeCommand(this), "lcb.command.modules.home.delete");
+        commandFramework.registerMainCommand(new HomesCommand(this), "lcb.command.modules.home.list");
     }
 
     @Override
