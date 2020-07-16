@@ -17,35 +17,15 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.gmail.mediusecho.livecraft_bungee_essentials.util;
+package com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp;
 
-import com.gmail.mediusecho.livecraft_bungee_essentials.LivecraftBungeeEssentials;
-import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.Home;
+import com.gmail.mediusecho.livecraft_bungee_essentials.util.Location;
 
-import java.util.UUID;
+public class Warp extends Home {
 
-public class BungeeUtil {
-
-    private static final LivecraftBungeeEssentials plugin = LivecraftBungeeEssentials.instance;
-
-    @NotNull
-    @Contract(" -> new")
-    public static BungeeConfig getPluginConfig () {
-        return new BungeeConfig(plugin, "", "config.yml");
+    public Warp(String name, Location location)
+    {
+        super(name, location);
     }
-
-    @NotNull
-    @Contract("_ -> new")
-    public static BungeeConfig getPlayerConfig (@NotNull UUID id) {
-        return new BungeeConfig(plugin, "players", id.toString());
-    }
-
-    @NotNull
-    @Contract(" -> new")
-    public static BungeeConfig getWarpConfig () {
-        return new BungeeConfig(plugin, "", "warps.yml");
-    }
-
 }

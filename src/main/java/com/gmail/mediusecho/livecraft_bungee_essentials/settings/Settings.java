@@ -27,4 +27,7 @@ public class Settings {
     /** Teleport **/
     public static final SettingsValue<Boolean> TELEPORT_ENABLED = new SettingsValue<>("modules.teleport.enabled", true);
     public static final SettingsValue<Integer> TELEPORT_TIMEOUT = new SettingsValue<>("modules.teleport.timeout", 120);
+
+    /** Warps **/
+    public static final SettingsValue<Boolean> WARPS_ENABLED = new SettingsValue<>("modules.warps.enabled", true);
 }

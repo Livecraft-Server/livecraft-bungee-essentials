@@ -29,6 +29,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.manager.TeleportManager;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.Module;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.WarpModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.BungeeUtil;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
@@ -51,6 +52,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
     private TeleportManager teleportManager;
 
     private BungeeConfig config;
+    private BungeeConfig warpConfig;
     private Map<UUID, BungeeConfig> playerConfigMap;
 
     @Override
@@ -58,6 +60,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
     {
         instance = this;
         config = BungeeUtil.getPluginConfig();
+        warpConfig = BungeeUtil.getWarpConfig();
         playerConfigMap = new HashMap<>();
 
         luckPermsApi = LuckPermsProvider.get();
@@ -74,6 +77,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         moduleList = new ArrayList<>();
         moduleList.add(new TeleportModule(this));
         moduleList.add(new HomeModule(this));
+        moduleList.add(new WarpModule(this));
 
         for (Module m : moduleList) {
             m.reload();
@@ -97,6 +101,15 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
      */
     public Configuration getConfig () {
         return config.getConfig();
+    }
+
+    /**
+     * Returns this plugins warp.yml configuration
+     *
+     * @return
+     */
+    public BungeeConfig getWarpConfig () {
+        return warpConfig;
     }
 
     /**

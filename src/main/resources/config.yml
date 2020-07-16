@@ -63,7 +63,11 @@ modules
       tpahere: "&c{1} &6has requested that you teleport to them."
       teleporting: "&6Teleporting..."
       teleporting-to-player: "&6Teleporting to &c{1}&6."
-      tips:
-        - "&6To teleport, type &c/tpaccept"
-        - "&6To deny this request, type &c/tpdeny"
-        - "&6This request will timeout after &c{1} seconds&6."
+  warps:
+    enabled: true
+    messages:
+      set: "&a[*] Warp was set. Use &7/warp {1} &ato warp to this spot"
+      delete: "&c[*] Warp '&7{1}&c' was deleted"
+      missing: "&c[*] Hmm, that warp appears to be missing"
+      teleporting: "&a[*] Warping to &7{1}"
+      teleport-permission: "&c[*] You don't have permission to use that warp"

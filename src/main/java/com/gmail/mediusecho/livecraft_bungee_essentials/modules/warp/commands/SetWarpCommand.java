@@ -17,35 +17,35 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.gmail.mediusecho.livecraft_bungee_essentials.util;
+package com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.commands;
 
-import com.gmail.mediusecho.livecraft_bungee_essentials.LivecraftBungeeEssentials;
-import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
-import org.jetbrains.annotations.Contract;
+import com.gmail.mediusecho.fusion.annotations.*;
+import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.commands.CommandListener;
+import com.gmail.mediusecho.fusion.commands.properties.Sender;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.WarpModule;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
+@MainCommand
+@Command(argument = "setwarp", contexts = "name...")
+public class SetWarpCommand extends CommandListener {
 
-public class BungeeUtil {
+    private final WarpModule warpModule;
 
-    private static final LivecraftBungeeEssentials plugin = LivecraftBungeeEssentials.instance;
-
-    @NotNull
-    @Contract(" -> new")
-    public static BungeeConfig getPluginConfig () {
-        return new BungeeConfig(plugin, "", "config.yml");
+    public SetWarpCommand (final WarpModule warpModule)
+    {
+        this.warpModule = warpModule;
     }
 
-    @NotNull
-    @Contract("_ -> new")
-    public static BungeeConfig getPlayerConfig (@NotNull UUID id) {
-        return new BungeeConfig(plugin, "players", id.toString());
-    }
+    @Default
+    @Permission(permission = "lcb.command.modules.warp.set")
+    @SenderPolicy(Sender.PLAYER_ONLY)
+    public void setWarp (@NotNull BungeeCommandSender sender)
+    {
+        ProxiedPlayer player = sender.getPlayer();
+        String warpName = sender.getArgument(0);
 
-    @NotNull
-    @Contract(" -> new")
-    public static BungeeConfig getWarpConfig () {
-        return new BungeeConfig(plugin, "", "warps.yml");
+        warpModule.setPendingWarp(player, warpName);
     }
-
 }

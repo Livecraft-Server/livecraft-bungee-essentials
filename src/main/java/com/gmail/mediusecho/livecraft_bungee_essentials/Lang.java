@@ -67,7 +67,14 @@ public enum Lang {
     TELEPORT_ASK ("modules.teleport.messages.tpa"),
     TELEPORT_HERE ("modules.teleport.messages.tpahere"),
     TELEPORT_TELEPORTING ("modules.teleport.messages.teleporting"),
-    TELEPORT_TELEPORTING_TO_PLAYER ("modules.teleport.messages.teleporting-to-player");
+    TELEPORT_TELEPORTING_TO_PLAYER ("modules.teleport.messages.teleporting-to-player"),
+
+    /** Warps **/
+    WARP_SET ("modules.warps.messages.set"),
+    WARP_DELETED ("modules.warps.messages.delete"),
+    WARP_MISSING ("modules.warps.messages.missing"),
+    WARP_TELEPORTING ("modules.warps.messages.teleporting"),
+    WARP_TELEPORT_PERMISSION ("modules.warps.messages.teleport-permission");
 
     private final LivecraftBungeeEssentials plugin = LivecraftBungeeEssentials.instance;
     public final String key;
