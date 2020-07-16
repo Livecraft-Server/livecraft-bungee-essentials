@@ -15,6 +15,7 @@ modules
       set: "&a[*] Home was set. Use &7/home &ato return to this spot"
       set-multiple: "&a[*] Home '&7{1}&a' was set. Use &7/home {1} &ato return to this spot"
       delete: "&a[*] &7'{1}&a' was deleted"
+      set-multiple-permission: "&c[*] You don't have permission to set multiple homes"
       delete-error: "&c[*] '&f{1}&c' does not exist"
       missing: "&c[*] Hmm, that home appears to be missing"
       reserved: "&c[*] {1} cannot be set manually"

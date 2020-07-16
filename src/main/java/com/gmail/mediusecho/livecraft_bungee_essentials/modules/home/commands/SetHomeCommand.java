@@ -49,7 +49,7 @@ public class SetHomeCommand extends CommandListener {
     }
 
     @Context(context = "name...")
-    @Permission(permission = "lcb.command.modules.home.set.multiple")
+    @Permission(permission = "lcb.command.modules.home.set.multiple", permissionDeniedKey = "modules.homes.messages.set-multiple-permission")
     @SenderPolicy(Sender.PLAYER_ONLY)
     public void setHomeName (@NotNull BungeeCommandSender sender) {
         setHome(sender.getPlayer(), sender.getArgument(0));
