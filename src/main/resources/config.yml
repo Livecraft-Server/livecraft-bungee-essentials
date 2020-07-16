@@ -31,6 +31,24 @@ modules
       # {2}: All homes the player has separated by ','
       list-unlimited: "&a[*] Homes: (&e{1}&a/&eUnlimited&a): &f{2}"
   #
+  #
+  motd:
+    enabled: true
+    maintenance:
+      # Enable maintenance mode.
+      # Will display a different motd on the server list
+      # and kick anyone trying to join
+      enabled: false
+      motd: "&5❤ &aLivecraft: Online Since 2011 &5❤/n&4Maintenance mode. We'll be back shortly!"
+      kick-message: "&cLivecraft is in maintenance mode. We'll be back shortly"
+      whitelist:
+        - Medius_Echo
+        - alfonsojon
+        - SentinelLion
+    line-width: 250
+    fallback-motd: "&5❤ &aLivecraft: Online Since 2011 &5❤/n&8- &71.15.2 &8-"
+    motds:
+      - "&5❤ &71.15.2 - &aLivecraft: Online Since 2011 &5❤/n&fWelcome back &3%player%&f!"
   teleport:
     enabled: true
     # How long a pending teleport request will wait before

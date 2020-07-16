@@ -28,6 +28,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
 import com.gmail.mediusecho.livecraft_bungee_essentials.manager.TeleportManager;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.Module;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.motd.MotdModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.WarpModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.BungeeUtil;
@@ -78,6 +79,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         moduleList.add(new TeleportModule(this));
         moduleList.add(new HomeModule(this));
         moduleList.add(new WarpModule(this));
+        moduleList.add(new MotdModule(this));
 
         for (Module m : moduleList) {
             m.reload();

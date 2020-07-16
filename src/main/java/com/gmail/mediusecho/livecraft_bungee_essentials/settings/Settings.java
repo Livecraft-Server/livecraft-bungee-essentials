@@ -24,6 +24,16 @@ public class Settings {
     /** Homes **/
     public static final SettingsValue<Boolean> HOMES_ENABLED = new SettingsValue<>("modules.homes.enabled", true);
 
+    /** Motd **/
+    public static final SettingsValue<Boolean> MOTD_ENABLED = new SettingsValue<>("modules.motd.enabled", true);
+    public static final SettingsValue<Boolean> MOTD_MAINTENANCE_MODE = new SettingsValue<>("modules.motd.maintenance.enabled", false);
+    public static final SettingsValue<String> MOTD_MAINTENANCE_MOTD = new SettingsValue<>("modules.motd.maintenance.motd", "");
+    public static final SettingsPointer MOTD_POINTER = new SettingsPointer("modules.motd.motds");
+    public static final SettingsValue<Integer> MOTD_LINE_WIDTH = new SettingsValue<>("modules.motd.line-width", 250);
+    public static final SettingsValue<String> MOTD_FALLBACK = new SettingsValue<>("modules.motd.fallback-motd", "");
+    public static final SettingsValue<String> MOTD_KICK_MESSAGE = new SettingsValue<>("modules.motd.maintenance.kick-message", "");
+    public static final SettingsPointer MOTD_WHITELIST_POINTER = new SettingsPointer("modules.motd.maintenance.whitelist");
+
     /** Teleport **/
     public static final SettingsValue<Boolean> TELEPORT_ENABLED = new SettingsValue<>("modules.teleport.enabled", true);
     public static final SettingsValue<Integer> TELEPORT_TIMEOUT = new SettingsValue<>("modules.teleport.timeout", 120);
