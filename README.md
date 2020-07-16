@@ -6,5 +6,5 @@ Needs to have [livecraft-spigot-essentials](https://github.com/Livecraft-Server/
 ### Features
 * Cross-server teleport support (similar to Essentials)
 * Cross-server home support
-* Cross-server warp support (Comming soon)
+* Cross-server warp support
 * Cross-server player @ mentions (Coming soon)
