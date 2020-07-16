@@ -25,7 +25,9 @@ import com.gmail.mediusecho.fusion.annotations.MainCommand;
 import com.gmail.mediusecho.fusion.annotations.Permission;
 import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
 import com.gmail.mediusecho.fusion.commands.CommandListener;
+import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
 import com.gmail.mediusecho.livecraft_bungee_essentials.LivecraftBungeeEssentials;
+import org.jetbrains.annotations.NotNull;
 
 @MainCommand
 @Command(argument = "lcbreload")
@@ -40,8 +42,9 @@ public class ReloadCommand extends CommandListener {
 
     @Default
     @Permission(permission = "lcb.command.reload")
-    public void reload (BungeeCommandSender sender)
+    public void reload (@NotNull BungeeCommandSender sender)
     {
         plugin.reload();
+        Lang.RELOAD.sendTo(sender.getCommandSender());
     }
 }
