@@ -24,6 +24,7 @@ import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
 import com.gmail.mediusecho.fusion.commands.CommandListener;
 import com.gmail.mediusecho.fusion.commands.properties.Sender;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
+import org.jetbrains.annotations.NotNull;
 
 @MainCommand
 @Command(argument = "tpaccept")
@@ -39,8 +40,7 @@ public class TeleportAcceptCommand extends CommandListener {
     @Default
     @Permission(permission = "lcb.command.modules.teleport.accept")
     @SenderPolicy(Sender.PLAYER_ONLY)
-    public void acceptTeleport (BungeeCommandSender sender)
-    {
+    public void acceptTeleport (@NotNull BungeeCommandSender sender) {
         teleportModule.teleportAccept(sender.getPlayer());
     }
 }
