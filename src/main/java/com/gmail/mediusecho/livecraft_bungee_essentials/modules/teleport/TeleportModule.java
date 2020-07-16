@@ -188,7 +188,7 @@ public class TeleportModule extends Module {
         // Return here if there are no pending requests to accept
         if (!teleportRequestMap.containsKey(id))
         {
-            player.sendMessage(Lang.TELEPORT_PENDING_ERROR.get());
+            Lang.TELEPORT_PENDING_ERROR.sendTo(player);
             return;
         }
 
@@ -196,13 +196,13 @@ public class TeleportModule extends Module {
         if (request == null)
         {
             teleportRequestMap.remove(id);
-            player.sendMessage(Lang.TELEPORT_PENDING_ERROR.get());
+            Lang.TELEPORT_PENDING_ERROR.sendTo(player);
             return;
         }
 
         if (request.hasTimedOut(teleportTimeout))
         {
-            player.sendMessage(Lang.TELEPORT_REQUEST_TIMED_OUT.get());
+            Lang.TELEPORT_REQUEST_TIMED_OUT.sendTo(player);
             teleportRequestMap.remove(id);
             teleportRequestSentMap.remove(request.getSendingPlayer().getUniqueId());
             return;
@@ -229,7 +229,7 @@ public class TeleportModule extends Module {
         UUID id = player.getUniqueId();
         if (!teleportRequestMap.containsKey(id))
         {
-            player.sendMessage(Lang.TELEPORT_PENDING_ERROR.get());
+            Lang.TELEPORT_PENDING_ERROR.sendTo(player);
             return;
         }
 
@@ -238,12 +238,12 @@ public class TeleportModule extends Module {
 
         if (request.hasTimedOut(teleportTimeout))
         {
-            player.sendMessage(Lang.TELEPORT_REQUEST_TIMED_OUT.get());
+            Lang.TELEPORT_REQUEST_TIMED_OUT.sendTo(player);
             return;
         }
 
-        request.getSendingPlayer().sendMessage(Lang.TELEPORT_REQUEST_DENIED_FROM.get("{1}", player.getName()));
-        player.sendMessage(Lang.TELEPORT_REQUEST_DENIED.get());
+        Lang.TELEPORT_REQUEST_DENIED_FROM.sendTo(request.getSendingPlayer(), "{1}", player.getName());
+        Lang.TELEPORT_REQUEST_DENIED.sendTo(player);
     }
 
     /**
@@ -257,7 +257,7 @@ public class TeleportModule extends Module {
         UUID id = player.getUniqueId();
         if (!teleportRequestSentMap.containsKey(id))
         {
-            player.sendMessage(Lang.TELEPORT_PENDING_ERROR.get());
+            Lang.TELEPORT_PENDING_ERROR.sendTo(player);
             return;
         }
 
@@ -265,56 +265,50 @@ public class TeleportModule extends Module {
         TeleportRequest request = teleportRequestMap.remove(targetId);
         if (request == null)
         {
-            player.sendMessage(Lang.TELEPORT_PENDING_ERROR.get());
+            Lang.TELEPORT_PENDING_ERROR.sendTo(player);
             return;
         }
 
         if (request.hasTimedOut(teleportTimeout))
         {
-            player.sendMessage(Lang.TELEPORT_REQUEST_TIMED_OUT.get());
+            Lang.TELEPORT_REQUEST_TIMED_OUT.sendTo(player);
             return;
         }
 
-        request.getRequestedPlayer().sendMessage(Lang.TELEPORT_REQUEST_CANCELLED_FROM.get("{1}", player.getName()));
-        player.sendMessage(Lang.TELEPORT_REQUEST_CANCELLED.get());
+        Lang.TELEPORT_REQUEST_CANCELLED_FROM.sendTo(request.getRequestedPlayer(), "{1}", player.getName());
+        Lang.TELEPORT_REQUEST_CANCELLED.sendTo(player);
     }
 
     private void showTeleportAcceptedMessage (@NotNull ProxiedPlayer player) {
-        player.sendMessage(Lang.TELEPORT_REQUEST_ACCEPTED.get());
+        Lang.TELEPORT_REQUEST_ACCEPTED.sendTo(player);
     }
 
     private void showTeleportAcceptedFromMessage (@NotNull ProxiedPlayer player, String name) {
-        player.sendMessage(Lang.TELEPORT_REQUEST_ACCEPTED_FROM.get("{1}", name));
+        Lang.TELEPORT_REQUEST_ACCEPTED_FROM.sendTo(player, "{1}", name);
     }
 
     private void showTeleportingMessage (@NotNull ProxiedPlayer player) {
-        player.sendMessage(Lang.TELEPORT_TELEPORTING.get());
+        Lang.TELEPORT_TELEPORTING.sendTo(player);
     }
 
     private void showTeleportingToPlayerMessage (@NotNull ProxiedPlayer player, String name) {
-        player.sendMessage(Lang.TELEPORT_TELEPORTING_TO_PLAYER.get("{1}", name));
+        Lang.TELEPORT_TELEPORTING_TO_PLAYER.sendTo(player, "{1}", name);
     }
 
-    private void showTeleportRequestSentMessage (@NotNull ProxiedPlayer player, String name)
-    {
-        player.sendMessage(Lang.TELEPORT_REQUEST_SENT.get("{1}", name));
-        player.sendMessage(Lang.TELEPORT_REQUEST_CANCEL_TIP.get());
+    private void showTeleportRequestSentMessage (@NotNull ProxiedPlayer player, String name) {
+        Lang.TELEPORT_REQUEST_SENT.sendTo(player, "{1}", name);
     }
 
     private void showTeleportAskMessage (@NotNull ProxiedPlayer player, String name)
     {
-        player.sendMessage(Lang.TELEPORT_ASK.get("{1}", name));
-        player.sendMessage(Lang.TELEPORT_REQUEST_ACCEPT_TIP.get());
-        player.sendMessage(Lang.TELEPORT_REQUEST_DENY_TIP.get());
-        player.sendMessage(Lang.TELEPORT_REQUEST_TIMEOUT_TIP.get("{1}", teleportTimeout));
+        Lang.TELEPORT_ASK.sendTo(player, "{1}", name);
+        Lang.TELEPORT_REQUEST_TIP.sendTo(player, "{1}", teleportTimeout);
     }
 
     private void showTeleportHereMessage (@NotNull ProxiedPlayer player, String name)
     {
-        player.sendMessage(Lang.TELEPORT_HERE.get("{1}", name));
-        player.sendMessage(Lang.TELEPORT_REQUEST_ACCEPT_TIP.get());
-        player.sendMessage(Lang.TELEPORT_REQUEST_DENY_TIP.get());
-        player.sendMessage(Lang.TELEPORT_REQUEST_TIMEOUT_TIP.get("{1}", teleportTimeout));
+        Lang.TELEPORT_HERE.sendTo(player, "{1}", name);
+        Lang.TELEPORT_REQUEST_TIP.sendTo(player, "{1}", teleportTimeout);
     }
 
     @NotNull

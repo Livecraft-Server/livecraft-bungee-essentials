@@ -60,7 +60,7 @@ public class SetHomeCommand extends CommandListener {
         // Prevent players from manually setting their bed home
         if (homeName.equalsIgnoreCase("bed"))
         {
-            player.sendMessage(Lang.HOME_RESERVED.get("{1}", homeName));
+            Lang.HOME_RESERVED.sendTo(player, "{1}", homeName);
             return;
         }
 
@@ -69,7 +69,7 @@ public class SetHomeCommand extends CommandListener {
 
         if (homeLimit != -1 && homeCount >= homeLimit)
         {
-            player.sendMessage(Lang.HOME_LIMIT_REACHED.get("{1}", homeLimit));
+            Lang.HOME_LIMIT_REACHED.sendTo(player, "{1}", homeLimit);
             return;
         }
 

@@ -65,9 +65,9 @@ public class DeleteHomeCommand extends CommandListener {
     private void deleteHome (ProxiedPlayer player, String name)
     {
         if (homeModule.deleteHome(player, name)) {
-            player.sendMessage(Lang.HOME_DELETED.get("{1}", name));
+            Lang.HOME_DELETED.sendTo(player, "{1}", name);
         } else {
-            player.sendMessage(Lang.HOME_DELETE_ERROR.get("{1}", name));
+            Lang.HOME_DELETE_ERROR.sendTo(player, "{1}", name);
         }
     }
 }

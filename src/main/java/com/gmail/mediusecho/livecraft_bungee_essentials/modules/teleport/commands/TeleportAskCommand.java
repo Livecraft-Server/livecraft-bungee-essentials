@@ -51,13 +51,13 @@ public class TeleportAskCommand extends CommandListener {
 
         if (targetPlayer == null)
         {
-            sender.sendMessage(Lang.UNKNOWN_PLAYER.get("{1}", playerName));
+            Lang.UNKNOWN_PLAYER.sendTo(player, "{1}", playerName);
             return;
         }
 
         if (player.getName().equalsIgnoreCase(targetPlayer.getName()))
         {
-            sender.sendMessage(Lang.TELEPORT_REQUEST_SELF.get());
+            Lang.TELEPORT_REQUEST_SELF.sendTo(player);
             return;
         }
 

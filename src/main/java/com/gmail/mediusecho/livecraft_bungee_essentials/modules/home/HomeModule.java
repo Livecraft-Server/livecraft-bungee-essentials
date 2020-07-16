@@ -173,12 +173,12 @@ public class HomeModule extends Module {
         UUID id = player.getUniqueId();
         if (!homeMap.containsKey(id) || !homeMap.get(id).containsKey(name))
         {
-            player.sendMessage(Lang.HOME_MISSING.get());
+            Lang.HOME_MISSING.sendTo(player);
             return;
         }
 
         Home home = homeMap.get(id).get(name);
-        player.sendMessage(Lang.TELEPORT_TELEPORTING.get());
+        Lang.TELEPORT_TELEPORTING.sendTo(player);
         plugin.getTeleportManager().sendTeleportRequest(home.getServerInfo(plugin), player, home.getLocation());
     }
 
@@ -322,7 +322,7 @@ public class HomeModule extends Module {
         UUID id = player.getUniqueId();
         if (!pendingHomeMap.containsKey(id))
         {
-            player.sendMessage(Lang.HOME_SET_ERROR.get());
+            Lang.HOME_SET_ERROR.sendTo(player);
             return;
         }
 
@@ -333,7 +333,9 @@ public class HomeModule extends Module {
         addHome(id, new Home(homeName, location));
 
         Lang message = homeName.equalsIgnoreCase("home") ? Lang.HOME_SET : Lang.HOME_SET_MULTIPLE;
-        player.sendMessage(message.get("{1}", homeName));
+        message.sendTo(player, "{1}", homeName);
+    }
+
     /**
      * Sets this players bed home
      *

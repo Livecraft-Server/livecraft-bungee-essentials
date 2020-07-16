@@ -45,10 +45,12 @@ public class BackCommand extends CommandListener {
     public void teleportBack (@NotNull BungeeCommandSender sender)
     {
         ProxiedPlayer player = sender.getPlayer();
-        if (!plugin.getTeleportManager().teleportToPreviousLocation(player)) {
-            player.sendMessage(Lang.TELEPORT_BACK_ERROR.get());
+        if (!plugin.getTeleportManager().teleportToPreviousLocation(player))
+        {
+            Lang.TELEPORT_BACK_ERROR.sendTo(player);
+            return;
         }
-        player.sendMessage(Lang.TELEPORT_BACK.get());
+        Lang.TELEPORT_BACK.sendTo(player);
     }
 
 }
