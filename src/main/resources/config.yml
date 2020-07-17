@@ -2,7 +2,8 @@ misc:
   messages:
     reload: "&a[*] LivecraftBungeeEssentials reloaded"
     no-permission: "&c[*] You don't have permission to use this command"
-    unknown-command: ""
+    unknown-command: "&c[*] Unknown command"
+    player-only: "&c[*] Sorry, players only"
     unknown-player: "&c[*] Could not find {1}"
     back: "&6Returning to previous location"
     back-error: "&cCould not find previous location"
