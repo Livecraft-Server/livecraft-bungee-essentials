@@ -35,12 +35,7 @@ import java.util.UUID;
 @Command(argument = "homes")
 public class HomesCommand extends CommandListener {
 
-    private final HomeModule homeModule;
-
-    public HomesCommand (final HomeModule homeModule)
-    {
-        this.homeModule = homeModule;
-    }
+    @Inject private HomeModule homeModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.home.list")

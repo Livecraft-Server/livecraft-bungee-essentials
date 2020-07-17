@@ -34,12 +34,7 @@ import org.jetbrains.annotations.NotNull;
 @ArgumentPolicy(Argument.RELAXED)
 public class SetHomeCommand extends CommandListener {
 
-    private final HomeModule homeModule;
-
-    public SetHomeCommand (final HomeModule homeModule)
-    {
-        this.homeModule = homeModule;
-    }
+    @Inject private HomeModule homeModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.home.set")

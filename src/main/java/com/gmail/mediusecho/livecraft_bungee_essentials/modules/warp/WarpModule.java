@@ -52,10 +52,9 @@ public class WarpModule extends Module {
         warpMap = new HashMap<>();
         pendingWarpMap = new HashMap<>();
 
-        BungeeCommandFramework commandFramework = plugin.getCommandFramework();
-        commandFramework.registerMainCommand(new SetWarpCommand(this), "lcb.command.modules.warp.set");
-        commandFramework.registerMainCommand(new WarpCommand(this), "lcb.command.modules.warp.to");
-        commandFramework.registerMainCommand(new DeleteWarpCommand(this), "lcb.command.modules.warp.delete");
+        plugin.registerMainCommand(new SetWarpCommand(), "lcb.command.modules.warp.set");
+        plugin.registerMainCommand(new WarpCommand(), "lcb.command.modules.warp.to");
+        plugin.registerMainCommand(new DeleteWarpCommand(), "lcb.command.modules.warp.delete");
     }
 
     @Override

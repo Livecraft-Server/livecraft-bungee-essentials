@@ -30,12 +30,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "tpacancel")
 public class TeleportCancelCommand extends CommandListener {
 
-    private final TeleportModule teleportModule;
-
-    public TeleportCancelCommand (final TeleportModule teleportModule)
-    {
-        this.teleportModule = teleportModule;
-    }
+    @Inject private TeleportModule teleportModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.teleport.cancel")

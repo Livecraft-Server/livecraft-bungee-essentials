@@ -34,12 +34,7 @@ import java.util.List;
 @ArgumentPolicy(Argument.RELAXED)
 public class HomeCommand extends CommandListener {
 
-    private final HomeModule homeModule;
-
-    public HomeCommand (final HomeModule homeModule)
-    {
-        this.homeModule = homeModule;
-    }
+    @Inject private HomeModule homeModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.home.teleport")

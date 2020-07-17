@@ -32,12 +32,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "back")
 public class BackCommand extends CommandListener {
 
-    private final LivecraftBungeeEssentials plugin;
-
-    public BackCommand(final LivecraftBungeeEssentials plugin)
-    {
-        this.plugin = plugin;
-    }
+    @Inject private LivecraftBungeeEssentials plugin;
 
     @Default
     @Permission(permission = "lcb.command.back")

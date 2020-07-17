@@ -33,12 +33,7 @@ import org.jetbrains.annotations.NotNull;
 @Usage("modules.teleport.messages.teleport-usage")
 public class TeleportAskCommand extends CommandListener {
 
-    private final TeleportModule teleportModule;
-
-    public TeleportAskCommand (final TeleportModule teleportModule)
-    {
-        this.teleportModule = teleportModule;
-    }
+    @Inject private TeleportModule teleportModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.teleport.ask")

@@ -56,11 +56,10 @@ public class HomeModule extends Module {
         homeMap = new HashMap<>();
         pendingHomeMap = new HashMap<>();
 
-        BungeeCommandFramework commandFramework = plugin.getCommandFramework();
-        commandFramework.registerMainCommand(new HomeCommand(this), "lcb.command.modules.home.teleport");
-        commandFramework.registerMainCommand(new SetHomeCommand(this), "lcb.command.modules.home.set");
-        commandFramework.registerMainCommand(new DeleteHomeCommand(this), "lcb.command.modules.home.delete");
-        commandFramework.registerMainCommand(new HomesCommand(this), "lcb.command.modules.home.list");
+        plugin.registerMainCommand(new HomeCommand(), "lcb.command.modules.home.teleport");
+        plugin.registerMainCommand(new SetHomeCommand(), "lcb.command.modules.home.set");
+        plugin.registerMainCommand(new DeleteHomeCommand(), "lcb.command.modules.home.delete");
+        plugin.registerMainCommand(new HomesCommand(), "lcb.command.modules.home.list");
     }
 
     @Override

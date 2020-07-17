@@ -33,12 +33,7 @@ import java.util.List;
 @Command(argument = "delwarp", contexts = "#warp")
 public class DeleteWarpCommand extends CommandListener {
 
-    private final WarpModule warpModule;
-
-    public DeleteWarpCommand (final WarpModule warpModule)
-    {
-        this.warpModule = warpModule;
-    }
+    @Inject private WarpModule warpModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.warp.delete")

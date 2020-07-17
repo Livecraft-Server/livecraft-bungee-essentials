@@ -21,6 +21,7 @@ package com.gmail.mediusecho.livecraft_bungee_essentials;
 
 import com.gmail.mediusecho.fusion.BungeeCommandFramework;
 import com.gmail.mediusecho.fusion.LanguageProvider;
+import com.gmail.mediusecho.fusion.commands.CommandListener;
 import com.gmail.mediusecho.fusion.properties.LangKey;
 import com.gmail.mediusecho.livecraft_bungee_essentials.commands.BackCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.commands.ReloadCommand;
@@ -46,11 +47,16 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
 
     public static LivecraftBungeeEssentials instance;
 
+    private Map<CommandListener, String> registeredCommands;
     private LuckPerms luckPermsApi;
 
     private List<Module> moduleList;
     private BungeeCommandFramework commandFramework;
     private TeleportManager teleportManager;
+
+    private TeleportModule teleportModule;
+    private HomeModule homeModule;
+    private WarpModule warpModule;
 
     private BungeeConfig config;
     private BungeeConfig warpConfig;
@@ -64,22 +70,38 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         warpConfig = BungeeUtil.getWarpConfig();
         playerConfigMap = new HashMap<>();
 
+        registeredCommands = new HashMap<>();
         luckPermsApi = LuckPermsProvider.get();
+        teleportManager = new TeleportManager(this);
 
         getProxy().registerChannel("lce:message");
 
-        commandFramework = new BungeeCommandFramework(this, this);
-        commandFramework.registerDefaultLangKey(LangKey.NO_PERMISSION, Lang.NO_PERMISSION.key);
-        commandFramework.registerMainCommand(new ReloadCommand(this), "lcb.command.reload");
-        commandFramework.registerMainCommand(new BackCommand(this), "lcb.command.back");
-
-        teleportManager = new TeleportManager(this);
+        teleportModule = new TeleportModule(this);
+        homeModule = new HomeModule(this);
+        warpModule = new WarpModule(this);
 
         moduleList = new ArrayList<>();
-        moduleList.add(new TeleportModule(this));
-        moduleList.add(new HomeModule(this));
-        moduleList.add(new WarpModule(this));
+        moduleList.add(teleportModule);
+        moduleList.add(homeModule);
+        moduleList.add(warpModule);
         moduleList.add(new MotdModule(this));
+
+        commandFramework = new BungeeCommandFramework(this, this);
+        commandFramework.registerDefaultLangKey(LangKey.NO_PERMISSION, Lang.NO_PERMISSION.key);
+        commandFramework.registerDefaultLangKey(LangKey.PLAYER_ONLY, Lang.PLAYER_ONLY.key);
+        commandFramework.registerDefaultLangKey(LangKey.UNKNOWN_COMMAND, Lang.UNKNOWN_COMMAND.key);
+        commandFramework.registerDependency(LivecraftBungeeEssentials.class, this);
+        commandFramework.registerDependency(TeleportManager.class, teleportManager);
+        commandFramework.registerDependency(TeleportModule.class, teleportModule);
+        commandFramework.registerDependency(HomeModule.class, homeModule);
+        commandFramework.registerDependency(WarpModule.class, warpModule);
+
+        registeredCommands.put(new ReloadCommand(), "lcb.command.reload");
+        registeredCommands.put(new BackCommand(), "lcb.command.back");
+
+        for (Map.Entry<CommandListener, String> commands : registeredCommands.entrySet()) {
+            commandFramework.registerMainCommand(commands.getKey(), commands.getValue());
+        }
 
         for (Module m : moduleList) {
             m.reload();
@@ -92,6 +114,20 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         for (Module m : moduleList) {
             m.reload();
         }
+    }
+
+    /**
+     * Adds a command to the pending registration map.
+     * These commands will only get registered if they're added
+     * before the #onEnable method completes.
+     *
+     * @param commandListener
+     *      The command to register.
+     * @param permission
+     *      The permission to register this command under.
+     */
+    public void registerMainCommand (CommandListener commandListener, String permission) {
+        registeredCommands.put(commandListener, permission);
     }
 
     /**

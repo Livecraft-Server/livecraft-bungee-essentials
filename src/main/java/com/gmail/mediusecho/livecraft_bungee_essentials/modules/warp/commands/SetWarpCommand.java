@@ -31,12 +31,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "setwarp", contexts = "name...")
 public class SetWarpCommand extends CommandListener {
 
-    private final WarpModule warpModule;
-
-    public SetWarpCommand (final WarpModule warpModule)
-    {
-        this.warpModule = warpModule;
-    }
+    @Inject private WarpModule warpModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.warp.set")

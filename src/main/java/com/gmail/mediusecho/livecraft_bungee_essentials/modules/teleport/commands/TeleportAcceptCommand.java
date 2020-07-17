@@ -30,12 +30,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "tpaccept")
 public class TeleportAcceptCommand extends CommandListener {
 
-    private final TeleportModule teleportModule;
-
-    public TeleportAcceptCommand (final TeleportModule teleportModule)
-    {
-        this.teleportModule = teleportModule;
-    }
+    @Inject private TeleportModule teleportModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.teleport.accept")

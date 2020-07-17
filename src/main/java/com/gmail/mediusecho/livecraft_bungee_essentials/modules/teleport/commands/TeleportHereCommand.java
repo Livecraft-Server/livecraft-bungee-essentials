@@ -19,10 +19,7 @@
 
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.commands;
 
-import com.gmail.mediusecho.fusion.annotations.Command;
-import com.gmail.mediusecho.fusion.annotations.Default;
-import com.gmail.mediusecho.fusion.annotations.MainCommand;
-import com.gmail.mediusecho.fusion.annotations.Permission;
+import com.gmail.mediusecho.fusion.annotations.*;
 import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
 import com.gmail.mediusecho.fusion.commands.CommandListener;
 import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
@@ -34,12 +31,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "tpahere", contexts = "@player")
 public class TeleportHereCommand extends CommandListener {
 
-    private final TeleportModule teleportModule;
-
-    public TeleportHereCommand (final TeleportModule teleportModule)
-    {
-        this.teleportModule = teleportModule;
-    }
+    @Inject private TeleportModule teleportModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.teleport.here")

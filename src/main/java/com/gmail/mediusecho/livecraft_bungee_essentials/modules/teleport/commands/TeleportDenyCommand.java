@@ -30,12 +30,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "tpdeny")
 public class TeleportDenyCommand extends CommandListener {
 
-    private final TeleportModule teleportModule;
-
-    public TeleportDenyCommand (final TeleportModule teleportModule)
-    {
-        this.teleportModule = teleportModule;
-    }
+    @Inject private TeleportModule teleportModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.teleport.deny")

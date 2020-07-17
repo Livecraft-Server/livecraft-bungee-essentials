@@ -61,12 +61,11 @@ public class TeleportModule extends Module {
         teleportRequestMap = new HashMap<>();
         teleportRequestSentMap = new HashMap<>();
 
-        BungeeCommandFramework commandFramework = plugin.getCommandFramework();
-        commandFramework.registerMainCommand(new TeleportAskCommand(this), "lcb.command.modules.teleport.ask");
-        commandFramework.registerMainCommand(new TeleportAcceptCommand(this), "lcb.command.modules.teleport.accept");
-        commandFramework.registerMainCommand(new TeleportHereCommand(this), "lcb.command.modules.teleport.here");
-        commandFramework.registerMainCommand(new TeleportDenyCommand(this), "lcb.command.modules.teleport.deny");
-        commandFramework.registerMainCommand(new TeleportCancelCommand(this), "lcb.command.modules.teleport.cancel");
+        plugin.registerMainCommand(new TeleportAskCommand(), "lcb.command.modules.teleport.ask");
+        plugin.registerMainCommand(new TeleportAcceptCommand(), "lcb.command.modules.teleport.accept");
+        plugin.registerMainCommand(new TeleportHereCommand(), "lcb.command.modules.teleport.here");
+        plugin.registerMainCommand(new TeleportDenyCommand(), "lcb.command.modules.teleport.deny");
+        plugin.registerMainCommand(new TeleportCancelCommand(), "lcb.command.modules.teleport.cancel");
     }
 
     @Override

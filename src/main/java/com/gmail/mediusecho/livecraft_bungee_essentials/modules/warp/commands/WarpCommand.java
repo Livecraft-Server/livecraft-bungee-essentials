@@ -34,12 +34,7 @@ import java.util.List;
 @Command(argument = "warp", contexts = "#warp")
 public class WarpCommand extends CommandListener {
 
-    private final WarpModule warpModule;
-
-    public WarpCommand (final WarpModule warpModule)
-    {
-        this.warpModule = warpModule;
-    }
+    @Inject private WarpModule warpModule;
 
     @Default
     @Permission(permission = "lcb.command.modules.warp.to.#warp lcb.command.modules.warp.to.all")

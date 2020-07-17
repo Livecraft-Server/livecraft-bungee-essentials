@@ -19,10 +19,7 @@
 
 package com.gmail.mediusecho.livecraft_bungee_essentials.commands;
 
-import com.gmail.mediusecho.fusion.annotations.Command;
-import com.gmail.mediusecho.fusion.annotations.Default;
-import com.gmail.mediusecho.fusion.annotations.MainCommand;
-import com.gmail.mediusecho.fusion.annotations.Permission;
+import com.gmail.mediusecho.fusion.annotations.*;
 import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
 import com.gmail.mediusecho.fusion.commands.CommandListener;
 import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
@@ -33,12 +30,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "lcbreload")
 public class ReloadCommand extends CommandListener {
 
-    private final LivecraftBungeeEssentials plugin;
-
-    public ReloadCommand (final LivecraftBungeeEssentials plugin)
-    {
-        this.plugin = plugin;
-    }
+    @Inject private LivecraftBungeeEssentials plugin;
 
     @Default
     @Permission(permission = "lcb.command.reload")
