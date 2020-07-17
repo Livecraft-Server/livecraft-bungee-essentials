@@ -21,6 +21,12 @@ package com.gmail.mediusecho.livecraft_bungee_essentials.settings;
 
 public class Settings {
 
+    /** Emotes **/
+    public static final SettingsValue<Boolean> EMOTES_ENABLED = new SettingsValue<>("modules.emote.enabled", true);
+    public static final SettingsValue<Boolean> EMOTE_COMMANDS_ENABLED = new SettingsValue<>("modules.emote.commands.enabled", true);
+    public static final SettingsPointer EMOTE_COMMAND_WHITELIST_POINTER = new SettingsPointer("modules.emote.commands.whitelisted-commands");
+    public static final SettingsPointer EMOTE_EMOTES_POINTER = new SettingsPointer("modules.emote.emotes");
+
     /** Homes **/
     public static final SettingsValue<Boolean> HOMES_ENABLED = new SettingsValue<>("modules.homes.enabled", true);
 
