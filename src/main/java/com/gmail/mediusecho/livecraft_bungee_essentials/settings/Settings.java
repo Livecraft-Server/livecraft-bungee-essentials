@@ -24,6 +24,12 @@ public class Settings {
     /** Homes **/
     public static final SettingsValue<Boolean> HOMES_ENABLED = new SettingsValue<>("modules.homes.enabled", true);
 
+    /** Markdown **/
+    public static final SettingsValue<Boolean> MARKDOWN_ENABLED = new SettingsValue<>("modules.markdown.enabled", true);
+    public static final SettingsValue<Boolean> MARKDOWN_COMMANDS_ENABLED = new SettingsValue<>("modules.markdown.commands.enabled", true);
+    public static final SettingsPointer MARKDOWN_COMMAND_WHITELIST_POINTER = new SettingsPointer("modules.markdown.commands.whitelisted-commands");
+    public static final SettingsPointer MARKDOWN_FORMATS_POINTER = new SettingsPointer("modules.markdown.formats");
+
     /** Motd **/
     public static final SettingsValue<Boolean> MOTD_ENABLED = new SettingsValue<>("modules.motd.enabled", true);
     public static final SettingsValue<Boolean> MOTD_MAINTENANCE_MODE = new SettingsValue<>("modules.motd.maintenance.enabled", false);

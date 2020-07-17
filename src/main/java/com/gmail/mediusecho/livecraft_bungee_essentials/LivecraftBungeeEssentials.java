@@ -85,6 +85,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         moduleList.add(homeModule);
         moduleList.add(warpModule);
         moduleList.add(new MotdModule(this));
+        moduleList.add(new MarkdownModule(this));
 
         commandFramework = new BungeeCommandFramework(this, this);
         commandFramework.registerDefaultLangKey(LangKey.NO_PERMISSION, Lang.NO_PERMISSION.key);

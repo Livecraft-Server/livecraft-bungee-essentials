@@ -31,6 +31,48 @@ modules
       # {2}: All homes the player has separated by ','
       list-unlimited: "&a[*] Homes: (&e{1}&a/&eUnlimited&a): &f{2}"
   #
+  markdown:
+    enabled: true
+    # Apply markdown to commands
+    commands:
+      enabled: true
+      # Commands that can be parsed for markdown
+      whitelisted-commands:
+        - "/msg"
+        - "/r"
+        - "/a"
+        - "/pc"
+        - "/emsg"
+        - "/er"
+        - "/me"
+        - "/nick"
+        - "/enick"
+        - "/say"
+    formats:
+      bold-italic:
+        regex: "\\*{3}(.*?)\\*{3}"
+        replacement: "&l&o{1}&r"
+        priority: 1
+      bold:
+        regex: "\\*{2}(.*?)\\*{2}"
+        replacement: "&l{1}&r"
+        priority: 5
+      italic:
+        regex: "\\*(.*?)\\*"
+        replacement: "&o{1}&r"
+        priority: 10
+      underline:
+        regex: "__(.*?)__"
+        replacement: "&n{1}&r"
+        priority: 15
+      italic-alternate:
+        regex: "\\b_(.*?)_\\b"
+        replacement: "&o{1}&r"
+        priority: 20
+      strikethrough:
+        regex: "~~(.*?)~~"
+        replacement: "&m{1}&r"
+        priority: 25
   #
   motd:
     enabled: true

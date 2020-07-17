@@ -29,10 +29,13 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtil {
 
     private static final LivecraftBungeeEssentials plugin = LivecraftBungeeEssentials.instance;
+    private static final Pattern COLOR_PREFIX_PATTERN = Pattern.compile("[&§][a-f0-9klmnor]");
 
     /**
      * Returns the largest permission integer for the give player.
@@ -70,5 +73,23 @@ public class StringUtil {
             }
         }
         return maxSize;
+    }
+
+    /**
+     * Attempts to find the last used color code in a given string.
+     *
+     * @param message
+     *      The string to parse.
+     * @return
+     *      The last known color code used.
+     */
+    public static String getLastUsedColorCode (String message)
+    {
+        Matcher matcher = COLOR_PREFIX_PATTERN.matcher(message);
+        String color = "";
+        while (matcher.find()) {
+            color = matcher.group();
+        }
+        return color;
     }
 }
