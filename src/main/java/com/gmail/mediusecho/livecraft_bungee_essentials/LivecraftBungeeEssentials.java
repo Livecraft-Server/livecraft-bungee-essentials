@@ -30,6 +30,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.manager.TeleportManager;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.Module;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.emote.EmoteModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.markdown.MarkdownModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.motd.MotdModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.WarpModule;
