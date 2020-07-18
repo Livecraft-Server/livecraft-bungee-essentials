@@ -32,6 +32,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.modules.emote.EmoteModul
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.markdown.MarkdownModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.motd.MotdModule;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.ping.PingModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.WarpModule;
 import com.gmail.mediusecho.livecraft_bungee_essentials.util.BungeeUtil;
@@ -89,6 +90,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         moduleList.add(new MotdModule(this));
         moduleList.add(new MarkdownModule(this));
         moduleList.add(new EmoteModule(this));
+        moduleList.add(new PingModule(this));
 
         commandFramework = new BungeeCommandFramework(this, this);
         commandFramework.registerDefaultLangKey(LangKey.NO_PERMISSION, Lang.NO_PERMISSION.key);

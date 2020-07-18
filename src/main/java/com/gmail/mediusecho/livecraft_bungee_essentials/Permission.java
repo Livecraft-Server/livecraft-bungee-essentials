@@ -29,7 +29,7 @@ public enum Permission {
     MARKDOWN_CHAT ("modules.markdown.chat"),
 
     PING_CHAT ("modules.ping.chat"),
-    PING_CHAT_RECEICE_GROUP ("modules.ping.chat.receive.group"),
+    PING_CHAT_RECEIVE_GROUP ("modules.ping.chat.receive.group"),
     PING_CHAT_NOTIFY_GROUP ("modules.ping.chat.notify.group");
 
     private static final String ROOT = "lcb.";
@@ -46,5 +46,13 @@ public enum Permission {
      */
     public boolean hasPermission (@NotNull ProxiedPlayer player) {
         return player.hasPermission(permission);
+    }
+
+    /**
+     * @param player The player to check
+     * @return Returns true if the player has permission
+     */
+    public boolean hasPermission (@NotNull ProxiedPlayer player, String append) {
+        return player.hasPermission(permission + "." + append);
     }
 }

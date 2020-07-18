@@ -27,8 +27,6 @@ modules:
         - "/enick"
         - "/say"
         - "/bc"
-    signs: true
-    anvils: true
     emotes:
       hugs: "༼つ◕_◕༽つ"
       shrug: "¯\\_(ツ)_/¯"
@@ -269,6 +267,42 @@ modules:
     fallback-motd: "&5❤ &aLivecraft: Online Since 2011 &5❤/n&8- &71.15.2 &8-"
     motds:
       - "&5❤ &71.15.2 - &aLivecraft: Online Since 2011 &5❤/n&fWelcome back &3%player%&f!"
+  #
+  ping:
+    enabled: true
+    player-highlight: "&3{1}&r"
+    include-nicknames: true
+    special-pings:
+      random:
+        enabled: true
+        highlight: "&5{1}&r"
+        aliases:
+          - someone
+          - anyone
+    groups:
+      enabled: true
+      groups:
+        staff:
+          highlight: "&c{1}&r"
+          aliases:
+            - staff
+        admin:
+          highlight: "&c{1}&r"
+          aliases:
+            - admin
+            - administrator
+        global:
+          highlight: "&c{1}&r"
+          aliases:
+            - everyone
+            - here
+    commands:
+      enabled: true
+      whitelist:
+        - "/say"
+        - "/bc"
+        - "/a"
+  #
   teleport:
     enabled: true
     # How long a pending teleport request will wait before

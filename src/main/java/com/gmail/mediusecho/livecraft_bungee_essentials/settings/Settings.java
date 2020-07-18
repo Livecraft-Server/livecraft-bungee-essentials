@@ -45,6 +45,17 @@ public class Settings {
     public static final SettingsValue<String> MOTD_FALLBACK = new SettingsValue<>("modules.motd.fallback-motd", "");
     public static final SettingsValue<String> MOTD_KICK_MESSAGE = new SettingsValue<>("modules.motd.maintenance.kick-message", "");
     public static final SettingsPointer MOTD_WHITELIST_POINTER = new SettingsPointer("modules.motd.maintenance.whitelist");
+    public static final SettingsValue<Boolean> PING_GROUPS_ENABLED = new SettingsValue<>("modules.ping.groups.enabled", true);
+    public static final SettingsValue<Boolean> PING_RANDOM_GROUP_ENABLED = new SettingsValue<>("modules.ping.special-pings.random.enabled", true);
+    public static final SettingsPointer PING_GROUPS_POINTER = new SettingsPointer("modules.ping.groups.groups");
+    public static final SettingsPointer PING_RANDOM_GROUP_POINTER = new SettingsPointer("modules.ping.special-pings.random");
+    public static final SettingsPointer PING_WHITELISTED_COMMANDS_POINTER = new SettingsPointer("modules.ping.commands.whitelist");
+
+    /** Ping **/
+    public static final SettingsValue<Boolean> PING_ENABLED  = new SettingsValue<>("modules.ping.enabled", true);
+    public static final SettingsValue<Boolean> PING_COMMANDS_ENABLED = new SettingsValue<>("modules.ping.commands.enabled", true);
+    public static final SettingsValue<Boolean> PING_SEARCH_NICKNAMES = new SettingsValue<>("modules.ping.include-nicknames", true);
+    public static final SettingsValue<String> PING_PLAYER_HIGHLIGHT = new SettingsValue<>("modules.ping.player-highlight", "");
 
     /** Teleport **/
     public static final SettingsValue<Boolean> TELEPORT_ENABLED = new SettingsValue<>("modules.teleport.enabled", true);
