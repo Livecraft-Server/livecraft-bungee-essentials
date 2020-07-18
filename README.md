@@ -7,4 +7,6 @@ Needs to have [livecraft-spigot-essentials](https://github.com/Livecraft-Server/
 * Cross-server teleport support (similar to Essentials)
 * Cross-server home support
 * Cross-server warp support
-* Cross-server player @ mentions (Coming soon)
+* Cross-server player @ mentions
+* Cross-server text markdown
+* Cross-server chat emotes
