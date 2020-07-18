@@ -24,7 +24,7 @@ import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
 import com.gmail.mediusecho.fusion.commands.CommandListener;
 import com.gmail.mediusecho.fusion.commands.properties.Sender;
 import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
-import com.gmail.mediusecho.livecraft_bungee_essentials.LivecraftBungeeEssentials;
+import com.gmail.mediusecho.livecraft_bungee_essentials.manager.TeleportManager;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 @Command(argument = "back")
 public class BackCommand extends CommandListener {
 
-    @Inject private LivecraftBungeeEssentials plugin;
+    @Inject private TeleportManager teleportManager;
 
     @Default
     @Permission(permission = "lcb.command.back")
@@ -40,12 +40,11 @@ public class BackCommand extends CommandListener {
     public void teleportBack (@NotNull BungeeCommandSender sender)
     {
         ProxiedPlayer player = sender.getPlayer();
-        if (!plugin.getTeleportManager().teleportToPreviousLocation(player))
-        {
+        if (teleportManager.teleportToPreviousLocation(player)) {
+            Lang.TELEPORT_BACK.sendTo(player);
+        } else {
             Lang.TELEPORT_BACK_ERROR.sendTo(player);
-            return;
         }
-        Lang.TELEPORT_BACK.sendTo(player);
     }
 
 }
