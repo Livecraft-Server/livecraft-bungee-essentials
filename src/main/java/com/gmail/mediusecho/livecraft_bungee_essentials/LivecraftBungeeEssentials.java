@@ -213,7 +213,7 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         return ChatColor.translateAlternateColorCodes('&', value);
     }
 
-    public void log (Object obj) {
-        this.getLogger().log(Level.INFO, "[LivecraftBungeeEssentials] " + obj.toString());
+    public void log (@NotNull Object obj) {
+        this.getLogger().log(Level.INFO, obj.toString());
     }
 }
