@@ -72,6 +72,9 @@ public class MarkdownModule extends Module {
         }
     }
 
+    // Fun Fact: This method will kick the player if they use markdowns
+    // without BungeeChat installed. The event does not like color
+    // codes.
     @EventHandler
     public void onChat (@NotNull ChatEvent event)
     {
