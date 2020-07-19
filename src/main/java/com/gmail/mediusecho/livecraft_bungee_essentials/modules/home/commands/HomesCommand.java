@@ -19,16 +19,16 @@
 
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands;
 
-import com.gmail.mediusecho.fusion.annotations.*;
-import com.gmail.mediusecho.fusion.command.BungeeCommandSender;
-import com.gmail.mediusecho.fusion.commands.CommandListener;
-import com.gmail.mediusecho.fusion.commands.properties.Sender;
+import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.annotations.*;
+import com.gmail.mediusecho.fusion.api.commands.CommandListener;
+import com.gmail.mediusecho.fusion.api.commands.Sender;
 import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
+import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.homes.Home;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.UUID;
 
 @MainCommand

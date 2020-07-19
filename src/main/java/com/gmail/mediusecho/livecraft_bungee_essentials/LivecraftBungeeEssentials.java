@@ -20,9 +20,9 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials;
 
 import com.gmail.mediusecho.fusion.BungeeCommandFramework;
-import com.gmail.mediusecho.fusion.LanguageProvider;
-import com.gmail.mediusecho.fusion.commands.CommandListener;
-import com.gmail.mediusecho.fusion.properties.LangKey;
+import com.gmail.mediusecho.fusion.api.LangKey;
+import com.gmail.mediusecho.fusion.api.LanguageProvider;
+import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.livecraft_bungee_essentials.commands.BackCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.commands.ReloadCommand;
 import com.gmail.mediusecho.livecraft_bungee_essentials.config.BungeeConfig;
