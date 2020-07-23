@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.fusion.api.commands.Sender;
@@ -31,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.home.list")
 @Command(argument = "homes")
 public class HomesCommand extends CommandListener {
 
@@ -44,15 +45,17 @@ public class HomesCommand extends CommandListener {
     {
         ProxiedPlayer player = sender.getPlayer();
         UUID id = player.getUniqueId();
-        List<String> homeNames = homeModule.getHomeNames(id);
         int homeLimit = homeModule.getHomeLimit(player);
         int homeCount = homeModule.getHomeCount(id);
 
         StringBuilder sb = new StringBuilder();
-        for (String name : homeNames) {
-            sb.append(name).append(", ");
+        for (Home home : homeModule.getHomes(id)) {
+            sb.append(home.getDisplayName()).append(", ");
         }
-        sb.setLength(sb.length() - 2);
+
+        if (sb.length() >= 2) {
+            sb.setLength(sb.length() - 2);
+        }
         String homes = sb.toString();
 
         // Unlimited
