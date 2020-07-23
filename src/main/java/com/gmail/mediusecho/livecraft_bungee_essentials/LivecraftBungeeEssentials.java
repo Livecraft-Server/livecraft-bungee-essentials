@@ -102,8 +102,8 @@ public class LivecraftBungeeEssentials extends Plugin implements LanguageProvide
         commandFramework.registerDependency(HomeModule.class, homeModule);
         commandFramework.registerDependency(WarpModule.class, warpModule);
 
-        registeredCommands.put(new ReloadCommand(), "lcb.command.reload");
-        registeredCommands.put(new BackCommand(), "lcb.command.back");
+        registeredCommands.add(new ReloadCommand());
+        registeredCommands.add(new BackCommand());
 
         for (Map.Entry<CommandListener, String> commands : registeredCommands.entrySet()) {
             commandFramework.registerMainCommand(commands.getKey(), commands.getValue());

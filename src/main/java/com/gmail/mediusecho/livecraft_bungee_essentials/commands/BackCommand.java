@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.fusion.api.commands.Sender;
@@ -28,7 +29,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.manager.TeleportManager;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.back")
 @Command(argument = "back")
 public class BackCommand extends CommandListener {
 
