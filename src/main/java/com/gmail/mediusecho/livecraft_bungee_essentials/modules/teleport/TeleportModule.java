@@ -61,11 +61,12 @@ public class TeleportModule extends Module {
         teleportRequestMap = new HashMap<>();
         teleportRequestSentMap = new HashMap<>();
 
-        plugin.registerMainCommand(new TeleportAskCommand(), "lcb.command.modules.teleport.ask");
-        plugin.registerMainCommand(new TeleportAcceptCommand(), "lcb.command.modules.teleport.accept");
-        plugin.registerMainCommand(new TeleportHereCommand(), "lcb.command.modules.teleport.here");
-        plugin.registerMainCommand(new TeleportDenyCommand(), "lcb.command.modules.teleport.deny");
-        plugin.registerMainCommand(new TeleportCancelCommand(), "lcb.command.modules.teleport.cancel");
+        plugin.registerMainCommand(new TeleportAskCommand());
+        plugin.registerMainCommand(new TeleportAcceptCommand());
+        plugin.registerMainCommand(new TeleportHereCommand());
+        plugin.registerMainCommand(new TeleportDenyCommand());
+        plugin.registerMainCommand(new TeleportCancelCommand());
+        plugin.registerMainCommand(new TeleportCommand());
     }
 
     @Override

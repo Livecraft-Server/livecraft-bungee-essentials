@@ -56,10 +56,10 @@ public class HomeModule extends Module {
         homeMap = new HashMap<>();
         pendingHomeMap = new HashMap<>();
 
-        plugin.registerMainCommand(new HomeCommand(), "lcb.command.modules.home.teleport");
-        plugin.registerMainCommand(new SetHomeCommand(), "lcb.command.modules.home.set");
-        plugin.registerMainCommand(new DeleteHomeCommand(), "lcb.command.modules.home.delete");
-        plugin.registerMainCommand(new HomesCommand(), "lcb.command.modules.home.list");
+        plugin.registerMainCommand(new HomeCommand());
+        plugin.registerMainCommand(new SetHomeCommand());
+        plugin.registerMainCommand(new DeleteHomeCommand());
+        plugin.registerMainCommand(new HomesCommand());
     }
 
     @Override

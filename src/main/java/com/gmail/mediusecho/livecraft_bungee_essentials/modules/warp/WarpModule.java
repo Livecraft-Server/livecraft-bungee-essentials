@@ -52,9 +52,9 @@ public class WarpModule extends Module {
         warpMap = new HashMap<>();
         pendingWarpMap = new HashMap<>();
 
-        plugin.registerMainCommand(new SetWarpCommand(), "lcb.command.modules.warp.set");
-        plugin.registerMainCommand(new WarpCommand(), "lcb.command.modules.warp.to");
-        plugin.registerMainCommand(new DeleteWarpCommand(), "lcb.command.modules.warp.delete");
+        plugin.registerMainCommand(new SetWarpCommand());
+        plugin.registerMainCommand(new WarpCommand());
+        plugin.registerMainCommand(new DeleteWarpCommand());
     }
 
     @Override
