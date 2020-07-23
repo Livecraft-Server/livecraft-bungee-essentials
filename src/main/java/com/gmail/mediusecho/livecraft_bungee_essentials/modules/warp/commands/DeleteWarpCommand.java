@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
@@ -29,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.warp.delete")
 @Command(argument = "delwarp", contexts = "#warp")
 public class DeleteWarpCommand extends CommandListener {
 
@@ -37,9 +38,8 @@ public class DeleteWarpCommand extends CommandListener {
 
     @Default
     @Permission(permission = "lcb.command.modules.warp.delete")
-    public void deleteWarp (@NotNull BungeeCommandSender sender)
+    public void deleteWarp (@NotNull BungeeCommandSender sender, String warpName)
     {
-        String warpName = sender.getArgument(0);
         if (warpModule.deleteWarp(warpName)) {
             Lang.WARP_DELETED.sendTo(sender.getCommandSender(), "{1}", warpName);
         } else {

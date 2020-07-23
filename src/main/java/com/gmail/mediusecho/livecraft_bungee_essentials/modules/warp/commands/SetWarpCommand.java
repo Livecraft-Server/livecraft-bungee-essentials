@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.fusion.api.commands.Sender;
@@ -27,7 +28,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.WarpModule;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.warp.set")
 @Command(argument = "setwarp", contexts = "name...")
 public class SetWarpCommand extends CommandListener {
 
@@ -36,11 +37,7 @@ public class SetWarpCommand extends CommandListener {
     @Default
     @Permission(permission = "lcb.command.modules.warp.set")
     @SenderPolicy(Sender.PLAYER_ONLY)
-    public void setWarp (@NotNull BungeeCommandSender sender)
-    {
-        ProxiedPlayer player = sender.getPlayer();
-        String warpName = sender.getArgument(0);
-
-        warpModule.setPendingWarp(player, warpName);
+    public void setWarp (@NotNull BungeeCommandSender sender, String warpName) {
+        warpModule.setPendingWarp(sender.getPlayer(), warpName);
     }
 }

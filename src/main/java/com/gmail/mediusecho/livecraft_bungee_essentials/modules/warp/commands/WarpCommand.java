@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.warp.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.fusion.api.commands.Sender;
@@ -30,21 +31,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.warp.to")
 @Command(argument = "warp", contexts = "#warp")
 public class WarpCommand extends CommandListener {
 
     @Inject private WarpModule warpModule;
 
     @Default
-    @Permission(permission = "lcb.command.modules.warp.to.#warp lcb.command.modules.warp.to.all")
+    @Permission(permission = "lcb.command.modules.warp.to.#warp|lcb.command.modules.warp.to.all")
     @SenderPolicy(Sender.PLAYER_ONLY)
-    public void warp (@NotNull BungeeCommandSender sender)
-    {
-        ProxiedPlayer player = sender.getPlayer();
-        String warpName = sender.getArgument(0);
-
-        warpModule.teleportToWarp(player, warpName);
+    public void warp (@NotNull BungeeCommandSender sender, String warpName) {
+        warpModule.teleportToWarp(sender.getPlayer(), warpName);
     }
 
     @Context(context = "#warp", providingContext = true)
