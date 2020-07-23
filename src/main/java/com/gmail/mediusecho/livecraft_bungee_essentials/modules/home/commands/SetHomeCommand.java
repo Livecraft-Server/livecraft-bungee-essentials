@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.Argument;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
@@ -29,8 +30,8 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-@MainCommand
-@Command(argument = "sethome", contexts = "name...")
+@MainCommand(permission = "lcb.command.modules.home.set")
+@Command(argument = "sethome", contexts = "name")
 @ArgumentPolicy(Argument.RELAXED)
 public class SetHomeCommand extends CommandListener {
 
@@ -43,11 +44,11 @@ public class SetHomeCommand extends CommandListener {
         setHome(sender.getPlayer(), "home");
     }
 
-    @Context(context = "name...")
+    @Context(context = "name")
     @Permission(permission = "lcb.command.modules.home.set.multiple", permissionDeniedKey = "modules.homes.messages.set-multiple-permission")
     @SenderPolicy(Sender.PLAYER_ONLY)
-    public void setHomeName (@NotNull BungeeCommandSender sender) {
-        setHome(sender.getPlayer(), sender.getArgument(0));
+    public void setHomeName (@NotNull BungeeCommandSender sender, String home) {
+        setHome(sender.getPlayer(), home);
     }
 
     private void setHome (ProxiedPlayer player, @NotNull String homeName)
