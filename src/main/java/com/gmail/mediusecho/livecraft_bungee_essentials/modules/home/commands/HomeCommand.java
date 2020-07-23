@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.Argument;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
@@ -29,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.home.teleport")
 @Command(argument = "home", contexts = "#homes")
 @ArgumentPolicy(Argument.RELAXED)
 public class HomeCommand extends CommandListener {
@@ -39,14 +40,8 @@ public class HomeCommand extends CommandListener {
     @Default
     @Permission(permission = "lcb.command.modules.home.teleport")
     @SenderPolicy(Sender.PLAYER_ONLY)
-    public void teleportHome (@NotNull BungeeCommandSender sender) {
-        homeModule.teleportHome(sender.getPlayer(), "home");
-    }
-
-    @Context(context = "#homes")
-    @Permission(permission = "lcb.command.modules.home.teleport")
-    public void teleportToHome (@NotNull BungeeCommandSender sender) {
-        homeModule.teleportHome(sender.getPlayer(), sender.getArgument(0));
+    public void teleportHome (@NotNull BungeeCommandSender sender, @Default("home") String home) {
+        homeModule.teleportHome(sender.getPlayer(), home);
     }
 
     @Context(context = "#homes", providingContext = true)
