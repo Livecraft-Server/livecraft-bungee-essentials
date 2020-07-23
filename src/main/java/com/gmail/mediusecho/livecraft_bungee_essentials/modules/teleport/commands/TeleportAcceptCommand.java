@@ -20,13 +20,14 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.fusion.api.commands.Sender;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.TeleportModule;
 import org.jetbrains.annotations.NotNull;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.teleport.accept")
 @Command(argument = "tpaccept")
 public class TeleportAcceptCommand extends CommandListener {
 

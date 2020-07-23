@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
 import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
@@ -27,7 +28,7 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.modules.teleport.Telepor
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.teleport.here")
 @Command(argument = "tpahere", contexts = "@player")
 public class TeleportHereCommand extends CommandListener {
 
@@ -35,24 +36,21 @@ public class TeleportHereCommand extends CommandListener {
 
     @Default
     @Permission(permission = "lcb.command.modules.teleport.here")
-    public void teleportHere (@NotNull BungeeCommandSender sender)
+    public void teleportHere (@NotNull BungeeCommandSender sender, ProxiedPlayer target)
     {
         ProxiedPlayer player = sender.getPlayer();
-        String playerName = sender.getArgument(0);
-        ProxiedPlayer targetPlayer = teleportModule.getPlayer(playerName);
-
-        if (targetPlayer == null)
+        if (target == null)
         {
-            Lang.UNKNOWN_PLAYER.sendTo(player, "{1}", playerName);
+            Lang.UNKNOWN_PLAYER.sendTo(player, "{1}", sender.getArgument(0));
             return;
         }
 
-        if (player.getName().equalsIgnoreCase(targetPlayer.getName()))
+        if (player.getName().equalsIgnoreCase(target.getName()))
         {
             Lang.TELEPORT_REQUEST_SELF.sendTo(player);
             return;
         }
 
-        teleportModule.teleportHere(player, targetPlayer);
+        teleportModule.teleportHere(player, target);
     }
 }
