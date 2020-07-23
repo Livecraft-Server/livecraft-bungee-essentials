@@ -20,6 +20,7 @@
 package com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.commands;
 
 import com.gmail.mediusecho.fusion.api.BungeeCommandSender;
+import com.gmail.mediusecho.fusion.api.MainCommand;
 import com.gmail.mediusecho.fusion.api.annotations.*;
 import com.gmail.mediusecho.fusion.api.commands.Argument;
 import com.gmail.mediusecho.fusion.api.commands.CommandListener;
@@ -28,10 +29,11 @@ import com.gmail.mediusecho.livecraft_bungee_essentials.Lang;
 import com.gmail.mediusecho.livecraft_bungee_essentials.modules.home.HomeModule;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
+import sun.plugin2.main.server.Plugin;
 
 import java.util.List;
 
-@MainCommand
+@MainCommand(permission = "lcb.command.modules.home.delete")
 @Command(argument = "delhome", contexts = "#homes")
 @ArgumentPolicy(Argument.RELAXED)
 public class DeleteHomeCommand extends CommandListener {
@@ -41,28 +43,18 @@ public class DeleteHomeCommand extends CommandListener {
     @Default
     @Permission(permission = "lcb.command.modules.home.delete")
     @SenderPolicy(Sender.PLAYER_ONLY)
-    public void deleteDefaultHome (@NotNull BungeeCommandSender sender) {
-        deleteHome(sender.getPlayer(), "home");
-    }
-
-    @Context(context = "#homes")
-    @Permission(permission = "lcb.command.modules.home.delete")
-    @SenderPolicy(Sender.PLAYER_ONLY)
-    public void deleteHome (@NotNull BungeeCommandSender sender) {
-        deleteHome(sender.getPlayer(), sender.getArgument(0));
+    public void deleteDefaultHome (@NotNull BungeeCommandSender sender, @Default("home") String home)
+    {
+        ProxiedPlayer player = sender.getPlayer();
+        if (homeModule.deleteHome(player, home)) {
+            Lang.HOME_DELETED.sendTo(player, "{1}", home);
+        } else {
+            Lang.HOME_DELETE_ERROR.sendTo(player, "{1}", home);
+        }
     }
 
     @Context(context = "#homes", providingContext = true)
     public List<String> getHomes (@NotNull BungeeCommandSender sender) {
         return homeModule.getHomeNames(sender.getPlayer().getUniqueId());
-    }
-
-    private void deleteHome (ProxiedPlayer player, String name)
-    {
-        if (homeModule.deleteHome(player, name)) {
-            Lang.HOME_DELETED.sendTo(player, "{1}", name);
-        } else {
-            Lang.HOME_DELETE_ERROR.sendTo(player, "{1}", name);
-        }
     }
 }
